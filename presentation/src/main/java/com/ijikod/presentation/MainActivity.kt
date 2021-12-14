@@ -1,4 +1,4 @@
-package com.ijikod.dog_friendly
+package com.ijikod.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
