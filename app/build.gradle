@@ -1,15 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    compileSdk ConfigData.androidCompileSdk
+    compileSdkVersion ConfigData.androidCompileSdk
 
     defaultConfig {
         applicationId "com.ijikod.dog_friendly"
-        minSdk ConfigData.androidMinSdk
-        targetSdk ConfigData.androidTargetSdk
+        minSdkVersion ConfigData.androidMinSdk
+        targetSdkVersion ConfigData.androidTargetSdk
         versionCode ConfigData.versionCode
         versionName ConfigData.versionName
 
@@ -29,17 +31,36 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/rxjava.properties'
+        pickFirst 'META-INF/gradle/incremental.annotation.processors'
+    }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
 
     implementation project(path: ':domain')
     implementation project(path: ':data')
-    implementation project(path: ':presentation')
-    implementation Libs.android
+    implementation Libs.androidKtx
     implementation Libs.appCompat
     implementation Libs.materialDesign
     implementation Libs.constraintLayout
+    implementation Libs.androidHilt
+    implementation Libs.hiltAndroidCompiler
+    implementation Libs.retrofit
+    implementation Libs.okHttp
+    implementation Libs.gson
+    implementation Libs.rxJava
+    implementation Libs.rxRelay
+    implementation Libs.rxAndroid
+    implementation Libs.rxBindings
+    implementation Libs.navigationFragmentKtx
+    implementation Libs.navigationUIKtx
     testImplementation Libs.junit
     androidTestImplementation Libs.espressoTest
     androidTestImplementation Libs.androidJunitTest

@@ -1,0 +1,49 @@
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+}
+
+android {
+    compileSdkVersion ConfigData.androidCompileSdk
+
+    defaultConfig {
+        minSdkVersion ConfigData.androidMinSdk
+        targetSdkVersion ConfigData.androidTargetSdk
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation project(path: ':domain')
+
+    api Libs.roomRxJava
+    api Libs.retrofit
+
+    api Libs.androidKtx
+    api Libs.gson
+    api Libs.room
+    api Libs.roomRxJava
+    kapt Libs.roomCompiler
+    implementation Libs.kotlinStdlib
+    implementation Libs.javaxInject
+    testImplementation Libs.junit
+}

@@ -18,5 +18,4 @@ rootProject.name = "Dog-Friendly"
 include ':app'
 include ':buildsrc'
 include ':domain'
-include ':presentation'
 include ':data'
