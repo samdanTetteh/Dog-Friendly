@@ -29,11 +29,14 @@ object Libs {
     const val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val androidJunitTest = "androidx.test.ext:junit:${Versions.androidTestJunit}"
 
+    const val lifeCycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifeCycle}"
+
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomRxJava = "androidx.room:room-rxjava2:${Versions.room}"
 
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
+    const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
     const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:${Versions.rxAndroid}"

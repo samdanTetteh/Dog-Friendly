@@ -1,4 +1,4 @@
-package common
+package com.ijikod.dog_friendly.common
 
 import androidx.lifecycle.ViewModel
 import com.jakewharton.rxrelay2.PublishRelay

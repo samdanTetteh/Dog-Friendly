@@ -1,5 +1,6 @@
 package com.ijikod.data.allBreeds
 
+import android.util.Log
 import com.ijikod.data.allBreeds.api.AllBreedsApi
 import com.ijikod.domain.allBreeds.entity.AllBreeds
 import com.ijikod.domain.allBreeds.repository.GetAllBreedsRepository
@@ -14,10 +15,10 @@ class GetAllBreedsImpl @Inject constructor(
 
     override fun getAllBreeds(): Completable {
         return remote.getAllBreads()
-            .toObservable()
-            .doOnNext{
-
+            .map {
+                Log.d("initial data", it.status)
             }
+            .toObservable()
             .ignoreElements()
     }
 

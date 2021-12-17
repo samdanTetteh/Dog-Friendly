@@ -40,6 +40,18 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+    hilt {
+        enableExperimentalClasspathAggregation = true
+    }
 }
 
 dependencies {
@@ -51,7 +63,8 @@ dependencies {
     implementation Libs.materialDesign
     implementation Libs.constraintLayout
     implementation Libs.androidHilt
-    implementation Libs.hiltAndroidCompiler
+    implementation Libs.lifeCycle
+    kapt Libs.hiltAndroidCompiler
     implementation Libs.retrofit
     implementation Libs.okHttp
     implementation Libs.gson
@@ -59,8 +72,10 @@ dependencies {
     implementation Libs.rxRelay
     implementation Libs.rxAndroid
     implementation Libs.rxBindings
+    implementation Libs.retrofitRxAdapter
     implementation Libs.navigationFragmentKtx
     implementation Libs.navigationUIKtx
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation Libs.junit
     androidTestImplementation Libs.espressoTest
     androidTestImplementation Libs.androidJunitTest

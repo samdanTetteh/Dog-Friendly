@@ -1,6 +1,6 @@
 package com.ijikod.dog_friendly.allBreeds.state
 
-import common.AsyncResult
+import com.ijikod.dog_friendly.common.AsyncResult
 
 data class AllBreedsState(
     val showBreed: AsyncResult<Nothing>? = null,

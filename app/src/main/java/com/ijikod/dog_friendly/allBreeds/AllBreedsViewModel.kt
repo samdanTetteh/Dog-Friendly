@@ -2,17 +2,23 @@ package com.ijikod.dog_friendly.allBreeds
 
 import com.ijikod.dog_friendly.allBreeds.state.AllBreedsState
 import com.ijikod.domain.allBreeds.useCase.AllBreedsUseCase
-import common.RxViewModelStore
+import com.ijikod.dog_friendly.common.RxViewModelStore
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 @HiltViewModel
 class AllBreedsViewModel @Inject constructor (
-    private val useCase: AllBreedsUseCase
+    useCase: AllBreedsUseCase
 ): RxViewModelStore<AllBreedsState, AllBreedsViewModel.AllBreedsEvent>(AllBreedsState()) {
 
     init {
         useCase.invoke()
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+
+            }
+            .addDisposable()
     }
 
 

@@ -1,8 +1,7 @@
-package common
+package com.ijikod.dog_friendly.common
 
 import android.util.Log
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 
