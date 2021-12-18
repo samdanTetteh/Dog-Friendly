@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface AllBreedsApi {
 
     @GET("breeds/list/all")
-    fun getAllBreads(): Single<AllBreedsApiContract.allBreedsResponse>
+    fun getAllBreads(): Single<AllBreedsApiContract.AllBreedsResponse>
 }
