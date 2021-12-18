@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.ijikod.dog_friendly.allBreeds.AllBreedsViewModel
+import com.ijikod.dog_friendly.allBreeds.adapter.BreedListAdapter
+import com.ijikod.dog_friendly.common.AsyncResult
 import com.ijikod.dog_friendly.common.AutoCompositeDisposable
 import com.ijikod.dog_friendly.common.addTo
 import com.ijikod.dog_friendly.databinding.FragmentAllBreedsBinding
@@ -31,21 +33,32 @@ class AllBreedsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAllBreedsBinding.inflate(inflater, container, false)
+        var data: AllBreeds?
 
-        var data : AllBreeds? = null
+        val listAdapter = BreedListAdapter(
+            showSubBreeds = ::showSubBreed)
+        binding.allBreedsList.adapter = listAdapter
 
         viewModel
             .states()
             .subscribe{ state ->
                 binding.progressBar.isVisible = state.isLoading
-                data = state.getAllBreeds
 
-                Log.d("Data in view", data?.message?.keys.toString())
+                if (state.allBreeds is AsyncResult.Success) {
+                    state.getAllBreeds.let {
+                        listAdapter.data = state.breedsData
+                    }
+                }
 
 
         }.addTo(disposable)
 
         return binding.root
+    }
+
+
+    private fun showSubBreed(subBreed: String) {
+        TODO("implement sub breed")
     }
 
     override fun onDestroyView() {
