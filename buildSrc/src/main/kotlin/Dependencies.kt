@@ -9,6 +9,7 @@ object BuildPlugins {
     const val gradleBuildTools = "com.android.tools.build:gradle:${Versions.gradle}"
     const val androidKotlin = "org.jetbrains.kotlin.android:${Versions.kotlin}"
     const val kotlinJvm = "org.jetbrains.kotlin.jvm:${Versions.kotlin}"
+    const val navSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
 
 }
 
@@ -44,6 +45,8 @@ object Libs {
 
     const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUIKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
+    const val picasso ="com.squareup.picasso:picasso:${Versions.picasso}"
 
     const val javaxInject = "javax.inject:javax.inject:1"
     const val junit = "junit:junit:${Versions.jUnit}"

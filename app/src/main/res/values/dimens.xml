@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="breed_txt_padding">16dp</dimen>
+    <dimen name="sub_breed_padding">32dp</dimen>
+</resources>

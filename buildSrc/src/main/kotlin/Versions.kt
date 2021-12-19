@@ -28,6 +28,7 @@ object Versions {
     const val room = "2.2.1"
     const val rxAndroid = "2.1.1"
     const val rxBindings = "3.0.0"
+    const val picasso ="2.71828"
 
     // Junit
     const val jUnit = "4.13.2"

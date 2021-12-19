@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -86,6 +87,7 @@ dependencies {
     implementation Libs.retrofitRxAdapter
     implementation Libs.navigationFragmentKtx
     implementation Libs.navigationUIKtx
+    implementation Libs.picasso
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation Libs.junit
     androidTestImplementation Libs.espressoTest

@@ -3,24 +3,21 @@ package com.ijikod.dog_friendly.allBreeds.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.ijikod.dog_friendly.R
-import com.ijikod.dog_friendly.allBreeds.state.AllBreedsState
-
-const val VIEW_TYPE_SECTION = 1
-const val VIEW_TYPE_ITEM = 2
+import com.ijikod.dog_friendly.allBreeds.state.AllBreedsStates
+import com.ijikod.dog_friendly.common.VIEW_TYPE_ITEM
+import com.ijikod.dog_friendly.common.VIEW_TYPE_SECTION
+import com.ijikod.dog_friendly.databinding.BreedListItemBinding
+import com.ijikod.dog_friendly.databinding.SubBreedListItemBinding
 
 class BreedListAdapter (
-    val showSubBreeds: (String) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    val showDetails: (String, String) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var data = listOf<AllBreedsState.RecyclerViewItem>()
+    var data = listOf<AllBreedsStates.RecyclerViewItem>()
 
 
     override fun getItemViewType(position: Int): Int {
-        if (data[position] is AllBreedsState.SectionItem) {
+        if (data[position] is AllBreedsStates.SectionItem) {
            return VIEW_TYPE_SECTION
         }
 
@@ -30,23 +27,23 @@ class BreedListAdapter (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == VIEW_TYPE_SECTION) {
-            return BreedViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.breed_list_item, parent, false)
+            return BreedViewHolder(BreedListItemBinding.inflate(LayoutInflater.from(parent.context),
+                parent, false)
             )
         }
 
-        return SubBreedViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.sub_breed_list_item, parent, false)
+        return SubBreedViewHolder(SubBreedListItemBinding.inflate(LayoutInflater.from(parent.context),
+            parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = data[position]
-        if (holder is BreedViewHolder &&  item is AllBreedsState.SectionItem) {
+        if (holder is BreedViewHolder &&  item is AllBreedsStates.SectionItem) {
             holder.bind(item)
         }
 
-        if (holder is SubBreedViewHolder && item is AllBreedsState.ContentItem) {
+        if (holder is SubBreedViewHolder && item is AllBreedsStates.ContentItem) {
             holder.bind(item)
         }
     }
@@ -54,32 +51,42 @@ class BreedListAdapter (
     override fun getItemCount(): Int = data.size
 
 
-    internal inner class BreedViewHolder(view: View): RecyclerView.ViewHolder(view),
+    internal inner class BreedViewHolder(binding: BreedListItemBinding): RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
-        private val breedText = view.findViewById<TextView>(R.id.breed_txt)
+        private val breedText = binding.breedTxt
 
-        fun bind(item: AllBreedsState.SectionItem) {
-            breedText.text = item.title
+        init {
+            binding.root.setOnClickListener(this)
+        }
+
+        fun bind(item: AllBreedsStates.SectionItem) {
+            breedText.text = item.breed.trim().uppercase()
         }
 
         override fun onClick(v: View?) {
-//          showSubBreeds(selectedItem?.keys?.first() ?: "")
+            showDetails(breedText.text.toString().lowercase(), String())
         }
     }
 
 
-    internal inner class SubBreedViewHolder(view: View): RecyclerView.ViewHolder(view),
+    internal inner class SubBreedViewHolder(binding: SubBreedListItemBinding): RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
-        private val subBreedText = view.findViewById<TextView>(R.id.sub_breed_txt)
+        private val subBreedText = binding.subBreedTxt
+        private var parentBreed = String()
 
-        fun bind(item: AllBreedsState.ContentItem) {
-            subBreedText.text = item.name
+        init {
+            binding.root.setOnClickListener(this)
+        }
+
+        fun bind(item: AllBreedsStates.ContentItem) {
+            subBreedText.text = item.subBreed.trim()
+            parentBreed = item.breed.trim().lowercase()
         }
 
         override fun onClick(v: View?) {
-//          showSubBreeds(selectedItem?.keys?.first() ?: "")
+            showDetails(parentBreed, subBreedText.text.toString().lowercase())
         }
     }
 }

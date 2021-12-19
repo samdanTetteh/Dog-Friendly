@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Dog-Friendly</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="show_details">show details</string>
+    <string name="breed_details">Breed image</string>
     <string name="all_breeds">All Breeds</string>
 
 </resources>

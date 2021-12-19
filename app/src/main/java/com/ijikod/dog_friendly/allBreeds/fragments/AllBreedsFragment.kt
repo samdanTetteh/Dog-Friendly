@@ -1,20 +1,20 @@
 package com.ijikod.dog_friendly.allBreeds.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.ijikod.dog_friendly.allBreeds.AllBreedsViewModel
 import com.ijikod.dog_friendly.allBreeds.adapter.BreedListAdapter
-import com.ijikod.dog_friendly.common.AsyncResult
+import com.ijikod.dog_friendly.allBreeds.state.AllBreedsEvents
 import com.ijikod.dog_friendly.common.AutoCompositeDisposable
 import com.ijikod.dog_friendly.common.addTo
 import com.ijikod.dog_friendly.databinding.FragmentAllBreedsBinding
-import com.ijikod.domain.allBreeds.entity.AllBreeds
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,32 +33,47 @@ class AllBreedsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAllBreedsBinding.inflate(inflater, container, false)
-        var data: AllBreeds?
 
         val listAdapter = BreedListAdapter(
-            showSubBreeds = ::showSubBreed)
+            showDetails = ::showBreedDetails)
         binding.allBreedsList.adapter = listAdapter
 
-        viewModel
-            .states()
-            .subscribe{ state ->
-                binding.progressBar.isVisible = state.isLoading
+        viewModel.init()
 
-                if (state.allBreeds is AsyncResult.Success) {
-                    state.getAllBreeds.let {
-                        listAdapter.data = state.breedsData
+        viewModel.events()
+            .subscribe{ event ->
+
+                binding.progressBar.isVisible = (event is AllBreedsEvents.Loading)
+
+                if (event is AllBreedsEvents.Error) {
+                    event.error.message?.let { errorMsg ->
+                        showToast(errorMsg)
                     }
                 }
 
-
-        }.addTo(disposable)
+                if (event is AllBreedsEvents.ShowAllBreeds) {
+                    event.state.let { state ->
+                        state.getAllBreeds?.let {
+                            binding.progressBar.isVisible = state.isLoading
+                            listAdapter.data = state.allBreedsFormattedData
+                            listAdapter.notifyDataSetChanged()
+                        }
+                    }
+                }
+            }.addTo(disposable)
 
         return binding.root
     }
 
 
-    private fun showSubBreed(subBreed: String) {
-        TODO("implement sub breed")
+    private fun showBreedDetails(breed: String, subBreed: String = String()) {
+        val detailsFragmentAction = AllBreedsFragmentDirections
+            .actionAllBreedsFragmentToDetailsFragment(breed, subBreed)
+        findNavController().navigate(detailsFragmentAction)
+    }
+
+    private fun showToast(msg: String){
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {

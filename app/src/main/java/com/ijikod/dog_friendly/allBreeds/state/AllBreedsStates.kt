@@ -2,9 +2,11 @@ package com.ijikod.dog_friendly.allBreeds.state
 
 import com.ijikod.dog_friendly.common.AsyncResult
 import com.ijikod.domain.allBreeds.entity.AllBreeds
+import com.ijikod.domain.allBreeds.entity.BreedDetails
 
-data class AllBreedsState(
+data class AllBreedsStates(
     val allBreeds: AsyncResult<AllBreeds>? = null,
+    val breedDetails: AsyncResult<BreedDetails>? = null,
     val showSubBreed: AsyncResult<Nothing>? = null)
 {
     val isLoading: Boolean
@@ -16,25 +18,26 @@ data class AllBreedsState(
         } else null
 
 
-    val breedsData: List<RecyclerViewItem>
+    val getBreedDetails: List<String>?
+        get() =  if (breedDetails is AsyncResult.Success && breedDetails.data != null) {
+            breedDetails.data.message
+        } else null
+
+
+    val allBreedsFormattedData: List<RecyclerViewItem>
         get() = if (allBreeds is AsyncResult.Success && allBreeds.data != null) {
             val list = arrayListOf<RecyclerViewItem>()
             for (map in allBreeds.data.message) {
-                list.add(SectionItem(title = map.key))
+                list.add(SectionItem(breed = map.key))
                 for (value in map.value) {
-                    list.add(ContentItem(value, dataSize = map.value.size))
+                    list.add(ContentItem(breed = map.key, subBreed = value))
                 }
             }
             list
         } else emptyList()
 
-     inner class Data {
-        val breeds = getAllBreeds?.message
-    }
-
-
 
     open class RecyclerViewItem
-    class SectionItem(val title: String) : RecyclerViewItem()
-    class ContentItem(val name: String, val dataSize: Int) : RecyclerViewItem()
+    class SectionItem(val breed: String) : RecyclerViewItem()
+    class ContentItem(val breed: String, val subBreed: String) : RecyclerViewItem()
 }

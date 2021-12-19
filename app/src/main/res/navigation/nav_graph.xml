@@ -9,5 +9,20 @@
         android:id="@+id/allBreedsFragment"
         android:name="com.ijikod.dog_friendly.allBreeds.fragments.AllBreedsFragment"
         android:label="@string/all_breeds"
-        tools:layout="@layout/fragment_all_breeds" />
+        tools:layout="@layout/fragment_all_breeds" >
+        <action
+            android:id="@+id/action_allBreedsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment">
+            <argument
+                android:name="breed"
+                app:argType="string" />
+            <argument
+                android:name="subBreed"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.ijikod.dog_friendly.details.fragment.DetailsFragment"
+        android:label="DetailsFragment" />
 </navigation>
