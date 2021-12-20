@@ -37,7 +37,7 @@ Please find below more details...
 
 | All Breeds | Breed Details |
 |----------------------------|------------------------|
-|<img src="images/breed-list.jpg" alt="breed_list"/> | <img gtsrc="images/breed-details.jpg" alt="breed_list"/> |
+|<img src="images/breed-list.jpg" alt="breed_list"/> | <img src="images/breed-details.jpg" alt="breed_list"/> |
 
 # Getting started
 
@@ -54,4 +54,3 @@ Please find below more details...
 
 # Issues faced
 - Implementing instrumentation tests with *Hilt*
-
