@@ -12,6 +12,7 @@ object Versions {
     const val androidTestJunit = "1.1.3"
     const val navigation = "2.3.5"
     const val lifeCycle = "2.2.0"
+    const val recyclerView = "1.2.1"
 
     // Google
     const val material = "1.4.0"

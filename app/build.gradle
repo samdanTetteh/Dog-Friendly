@@ -74,6 +74,7 @@ dependencies {
     implementation Libs.appCompat
     implementation Libs.materialDesign
     implementation Libs.constraintLayout
+    implementation Libs.recyclerView
     implementation Libs.androidHilt
     implementation Libs.lifeCycle
     kapt Libs.hiltAndroidCompiler

@@ -22,6 +22,7 @@ object Libs {
     const val kotlin ="org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val materialDesign = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val androidHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
     const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
     const val espressoTest = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"

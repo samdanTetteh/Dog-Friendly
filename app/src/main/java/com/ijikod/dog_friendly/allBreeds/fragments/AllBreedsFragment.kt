@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.ijikod.dog_friendly.allBreeds.AllBreedsViewModel
 import com.ijikod.dog_friendly.allBreeds.adapter.BreedListAdapter
 import com.ijikod.dog_friendly.allBreeds.state.AllBreedsEvents
@@ -27,15 +28,28 @@ class AllBreedsFragment : Fragment() {
 
     private val disposable: AutoCompositeDisposable by lazy { AutoCompositeDisposable(lifecycle) }
     private val viewModel: AllBreedsViewModel by viewModels()
+    private lateinit var listAdapter: BreedListAdapter
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        listAdapter = BreedListAdapter(showDetails = ::showBreedDetails)
+
+        listAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAllBreedsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val listAdapter = BreedListAdapter(
-            showDetails = ::showBreedDetails)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.allBreedsList.adapter = listAdapter
 
         viewModel.init()
@@ -61,8 +75,6 @@ class AllBreedsFragment : Fragment() {
                     }
                 }
             }.addTo(disposable)
-
-        return binding.root
     }
 
 
