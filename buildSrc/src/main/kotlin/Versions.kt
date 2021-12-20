@@ -13,6 +13,9 @@ object Versions {
     const val navigation = "2.3.5"
     const val lifeCycle = "2.2.0"
     const val recyclerView = "1.2.1"
+    const val fragmentX = "1.4.0"
+    const val coreAndroidxTesting = "1.3.0"
+    const val androidXTestExtKotlinRunnerVersion = "1.1.2"
 
     // Google
     const val material = "1.4.0"
@@ -29,7 +32,8 @@ object Versions {
     const val room = "2.2.1"
     const val rxAndroid = "2.1.1"
     const val rxBindings = "3.0.0"
-    const val picasso ="2.71828"
+    const val picasso = "2.71828"
+    const val robolectric = "4.7.3"
 
     // Junit
     const val jUnit = "4.13.2"

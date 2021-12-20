@@ -16,7 +16,7 @@ android {
         versionCode ConfigData.versionCode
         versionName ConfigData.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.ijikod.com.ijikod.dog_friendly.CustomTestRunner"
     }
 
     buildTypes {
@@ -64,6 +64,22 @@ android {
             }
         }
     }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+
+        unitTests.all {
+            useJUnitPlatform() // <--- this is the important part
+        }
+    }
+}
+
+kapt {
+    arguments {
+        // Make Hilt share the same definition of Components in tests instead of
+        // creating a new set of Components per test class.
+        arg("dagger.hilt.shareTestComponents", "true")
+    }
 }
 
 dependencies {
@@ -77,7 +93,8 @@ dependencies {
     implementation Libs.recyclerView
     implementation Libs.androidHilt
     implementation Libs.lifeCycle
-    kapt Libs.hiltAndroidCompiler
+    implementation 'androidx.test:runner:1.4.0'
+    kaptAndroidTest Libs.hiltAndroidCompiler
     implementation Libs.retrofit
     implementation Libs.okHttp
     implementation Libs.gson
@@ -88,9 +105,19 @@ dependencies {
     implementation Libs.retrofitRxAdapter
     implementation Libs.navigationFragmentKtx
     implementation Libs.navigationUIKtx
+    implementation Libs.fragment
+    debugImplementation Libs.fragmentTesting
+    androidTestImplementation Libs.navigationTesting
     implementation Libs.picasso
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation Libs.junit
+    androidTestImplementation Libs.hiltTesting
+    testImplementation Libs.robolecttic
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+    androidTestImplementation (Libs.espressoTestContrib){
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'appcompat-v7'
+    }
     androidTestImplementation Libs.espressoTest
     androidTestImplementation Libs.androidJunitTest
 

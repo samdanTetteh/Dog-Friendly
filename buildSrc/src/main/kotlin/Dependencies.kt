@@ -23,9 +23,6 @@ object Libs {
     const val materialDesign = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
-    const val androidHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
-    const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
-    const val espressoTest = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val okHttp = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
@@ -44,11 +41,26 @@ object Libs {
     const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:${Versions.rxAndroid}"
     const val rxBindings = "com.jakewharton.rxbinding3:rxbinding:${Versions.rxBindings}"
 
+    const val androidHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+    const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    const val hiltTesting  = "com.google.dagger:hilt-android-testing:${Versions.daggerHilt}"
+
+    const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragmentX}"
+    const val fragmentTesting ="androidx.fragment:fragment-testing:${Versions.fragmentX}"
+
     const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUIKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
 
     const val picasso ="com.squareup.picasso:picasso:${Versions.picasso}"
 
+    const val androidCoreTesting = "androidx.test:core-ktx:${Versions.coreAndroidxTesting}"
+    const val androidJunitTesting = "androidx.test.ext:junit-ktx:${Versions.androidXTestExtKotlinRunnerVersion}"
+
+    const val espressoTest = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val espressoTestContrib = "androidx.test.espresso:espresso-contrib:${Versions.espressoCore}"
     const val javaxInject = "javax.inject:javax.inject:1"
+
+    const val robolecttic = "org.robolectric:robolectric:${Versions.robolectric}"
     const val junit = "junit:junit:${Versions.jUnit}"
 }
