@@ -35,6 +35,10 @@ Please find below more details...
 - Data surviving configuration changes (with [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel))
 - Android architecture components to share ViewModels during configuration changes
 
+| All Breeds | Breed Details |
+|----------------------------|------------------------|
+|<img src="images/breed-list.jpg" alt="breed_list"/> | <img src="images/breed-details.jpg" alt="breed_list"/> |
+
 # Getting started
 
 ### Script
