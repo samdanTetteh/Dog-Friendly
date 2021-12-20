@@ -11,7 +11,7 @@ Please find below more details...
 ## Clean architecture with 3 layers
 - Data (for database, API and preferences code)
 - Domain (for business logic and models)
-- Presentation/App (for UI logic, with [MVI](https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)
+- Presentation/App (for UI logic, with [MVI](https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started))
 
 <img src="images/clean-arch-img.png" alt="Architecture logo"/>
 
@@ -28,8 +28,8 @@ Please find below more details...
 - Networking (with [Retrofit](https://square.github.io/retrofit/))
 - Flat layout hierarchy (with [Constraint layouts](https://developer.android.com/jetpack/androidx/releases/constraintlayout))
 - Multi Screen Segmentation (with [Fragments](https://developer.android.com/jetpack/androidx/releases/fragment))
-- Nagivation (with [Navigation Library] (https://developer.android.com/guide/navigation/navigation-migrate))
-- Android lifecyle aware components (with [Lifecycle] (https://developer.android.com/jetpack/androidx/releases/lifecycle))
+- Nagivation (with [Navigation Library](https://developer.android.com/guide/navigation/navigation-migrate))
+- Android lifecyle aware components (with [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle))
 - Fluid list loading (with [Recycler View](https://developer.android.com/jetpack/androidx/releases/recyclerview))
 - Data Persistence (with [Room](https://developer.android.com/jetpack/androidx/releases/room))
 - Data surviving configuration changes (with [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel))
@@ -37,7 +37,7 @@ Please find below more details...
 
 | All Breeds | Breed Details |
 |----------------------------|------------------------|
-|<img src="images/breed-list.jpg" alt="breed_list"/> | <img src="images/breed-details.jpg" alt="breed_list"/> |
+|<img src="images/breed-list.jpg" alt="breed_list"/> | <img gtsrc="images/breed-details.jpg" alt="breed_list"/> |
 
 # Getting started
 
@@ -48,9 +48,9 @@ Please find below more details...
 # Notes
 - Dog-Friendly has offline support. Data is retrieved from the remote and saved when data is established
 
-# Future improvements
+# Future Improvements
 - Network notification when data is restored.
-- Improve views by introducing [compose](https://developer.android.com/jetpack/androidx/releases/compose)
+- Make UI Improvements and possibly introduce introducing [compose](https://developer.android.com/jetpack/androidx/releases/compose)
 
 # Issues faced
 - Implementing instrumentation tests with *Hilt*
