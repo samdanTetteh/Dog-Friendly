@@ -33,6 +33,7 @@ Please find below more details...
 - Fluid list loading (with [Recycler View](https://developer.android.com/jetpack/androidx/releases/recyclerview))
 - Data Persistence (with [Room](https://developer.android.com/jetpack/androidx/releases/room))
 - Data surviving configuration changes (with [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel))
+- Type safe dependency management (with [Kotlin DSL](https://kotlinlang.org/docs/type-safe-builders.html))
 - Android architecture components to share ViewModels during configuration changes
 
 | All Breeds | Breed Details |
