@@ -2,7 +2,7 @@
 
 # Dog Friendly
 
-This application make use of the Dogs Api hosted [here](https://dog.ceo/dog-api/). Currently has two screen, the first
+This application make use of the Dogs Api hosted [here](https://dog.ceo/dog-api/). Currently has two screens, the first
 screen displays a clickable vertical list of all dog breeds and their corresponding sub breeds. The second screen
 shows a grid list of all images pertaining to the selected breed.
 
@@ -43,10 +43,10 @@ Please find below more details...
 
 ### Script
 1. Clone this repository preferably with Android Studio
-2. Build project and then run application. In the situation where yo are asked about trusting the application please select *yes*
+2. Build project and then run application. In the situation where you are asked about trusting the application please do select *yes*
 
 # Notes
-- Dog-Friendly has offline support. Data is retrieved from the remote and saved when data is established
+- Dog-Friendly has offline support. Data is retrieved from remote when data is established and saved.
 
 # Future Improvements
 - Network notification when data is restored.
