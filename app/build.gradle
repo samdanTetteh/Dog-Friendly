@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-android'
 }
 
 android {
@@ -34,6 +35,7 @@ android {
     }
     packagingOptions {
         exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
         exclude 'META-INF/rxjava.properties'
         pickFirst 'META-INF/gradle/incremental.annotation.processors'
     }
@@ -50,10 +52,6 @@ android {
         checkReleaseBuilds false
     }
 
-    hilt {
-        enableExperimentalClasspathAggregation = true
-    }
-
     defaultConfig {
         javaCompileOptions {
             annotationProcessorOptions {
@@ -67,18 +65,10 @@ android {
 
     testOptions {
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
-
-        unitTests.all {
-            useJUnitPlatform() // <--- this is the important part
-        }
-    }
-}
-
-kapt {
-    arguments {
-        // Make Hilt share the same definition of Components in tests instead of
-        // creating a new set of Components per test class.
-        arg("dagger.hilt.shareTestComponents", "true")
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+        //for robolectric http://robolectric.org/migrating/#migrating-to-40
+        animationsDisabled = true
     }
 }
 
@@ -86,6 +76,9 @@ dependencies {
 
     implementation project(path: ':domain')
     implementation project(path: ':data')
+
+    kapt Libs.hiltAndroidCompiler
+
     implementation Libs.androidKtx
     implementation Libs.appCompat
     implementation Libs.materialDesign
@@ -93,8 +86,6 @@ dependencies {
     implementation Libs.recyclerView
     implementation Libs.androidHilt
     implementation Libs.lifeCycle
-    implementation 'androidx.test:runner:1.4.0'
-    kaptAndroidTest Libs.hiltAndroidCompiler
     implementation Libs.retrofit
     implementation Libs.okHttp
     implementation Libs.gson
@@ -106,19 +97,24 @@ dependencies {
     implementation Libs.navigationFragmentKtx
     implementation Libs.navigationUIKtx
     implementation Libs.fragment
-    debugImplementation Libs.fragmentTesting
-    androidTestImplementation Libs.navigationTesting
     implementation Libs.picasso
-    testImplementation Libs.junit
-    androidTestImplementation Libs.hiltTesting
-    testImplementation Libs.robolecttic
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+
+    debugImplementation Libs.fragmentTesting
+
+    androidTestImplementation Libs.navigationTesting
+    androidTestImplementation Libs.espressoTest
+    androidTestImplementation Libs.androidJunitTest
     androidTestImplementation (Libs.espressoTestContrib){
         exclude group: 'com.android.support', module: 'appcompat'
         exclude module: 'recyclerview-v7'
         exclude module: 'appcompat-v7'
     }
-    androidTestImplementation Libs.espressoTest
-    androidTestImplementation Libs.androidJunitTest
+
+    testImplementation Libs.junit
+    testImplementation Libs.hiltTesting
+    testImplementation Libs.robolecttic
+    testImplementation Libs.mockito
+    testImplementation Libs.mockitoKotlin
+    testImplementation Libs.mockK
 
 }

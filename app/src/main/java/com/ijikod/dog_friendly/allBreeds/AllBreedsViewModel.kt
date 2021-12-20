@@ -44,7 +44,7 @@ class AllBreedsViewModel @Inject constructor (
 
 
 
-    fun onShowBreed(breed: String, subBreed: String) {
+    fun onShowBreedDetails(breed: String, subBreed: String) {
             useCase.getBreedDetails(breed)
                 .mapToAsyncResult()
                 .subscribeOn(Schedulers.io())

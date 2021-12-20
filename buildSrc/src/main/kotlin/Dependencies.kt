@@ -54,12 +54,15 @@ object Libs {
 
     const val picasso ="com.squareup.picasso:picasso:${Versions.picasso}"
 
-    const val androidCoreTesting = "androidx.test:core-ktx:${Versions.coreAndroidxTesting}"
     const val androidJunitTesting = "androidx.test.ext:junit-ktx:${Versions.androidXTestExtKotlinRunnerVersion}"
 
     const val espressoTest = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     const val espressoTestContrib = "androidx.test.espresso:espresso-contrib:${Versions.espressoCore}"
     const val javaxInject = "javax.inject:javax.inject:1"
+
+    const val mockito = "org.mockito:mockito-core:3.11.0"
+    const val mockitoKotlin = "com.nhaarman:mockito-kotlin:1.5.0"
+    const val mockK = "io.mockk:mockk:1.9.3"
 
     const val robolecttic = "org.robolectric:robolectric:${Versions.robolectric}"
     const val junit = "junit:junit:${Versions.jUnit}"

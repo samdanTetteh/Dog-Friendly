@@ -7,6 +7,6 @@ import androidx.test.runner.AndroidJUnitRunner
 class CustomTestRunner : AndroidJUnitRunner() {
 
     override fun newApplication(cl: ClassLoader?, name: String?, context: Context?): android.app.Application {
-        return super.newApplication(cl, Application::class.java.name, context)
+        return super.newApplication(cl, DogFriendlyApplication::class.java.name, context)
     }
 }

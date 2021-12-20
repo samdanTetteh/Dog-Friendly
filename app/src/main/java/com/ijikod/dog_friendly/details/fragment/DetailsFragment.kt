@@ -1,7 +1,6 @@
 package com.ijikod.dog_friendly.details.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +36,7 @@ class DetailsFragment: Fragment() {
             val breed = args.getString(BREED_ARG, String())
             val  subBreed = args.getString(SUB_BREED_ARG, String())
 
-            (viewModel::onShowBreed)(breed, subBreed)
+            (viewModel::onShowBreedDetails)(breed, subBreed)
         }
 
         viewModel.events()
