@@ -38,7 +38,7 @@ Please find below more details...
 
 | All Breeds | Breed Details |
 |----------------------------|------------------------|
-|<img src="images/breed-list.png" alt="breed_list"/> | <img src="images/breed-details.png" alt="breed_list"/> |
+|<img src="images/breed_list.png" alt="breed_list"/> | <img src="images/breed_details.png" alt="breed_list"/> |
 
 # Getting started
 
