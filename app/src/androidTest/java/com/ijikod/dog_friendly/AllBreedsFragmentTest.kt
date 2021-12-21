@@ -10,6 +10,8 @@ import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ijikod.dog_friendly.allBreeds.fragments.AllBreedsFragment
@@ -65,13 +67,12 @@ class AllBreedsFragmentTest {
 
 
     @Test
-    fun givenBreedIsClicked(){
+    fun givenBreedIsClickedIsNavigationCorrect(){
         launchFragment()
 
-        //Click on first article
+        //Click on first breed
         onView(withId(R.id.all_breeds_list))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
-
     }
 
 

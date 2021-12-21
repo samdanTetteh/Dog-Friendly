@@ -6,6 +6,7 @@ object Versions {
 
     // Androidx
     const val androidCore = "1.7.0"
+    const val androidxCoreTest = "1.4.0"
     const val appCompact = "1.4.0"
     const val espressoCore = "3.4.0"
     const val constraintLayout = "2.1.2"

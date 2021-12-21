@@ -78,6 +78,9 @@ object Libs {
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockServer}"
     const val okHttpIdleResource= "com.jakewharton.espresso:okhttp3-idling-resource:1.0.0"
     const val espressoIdleResource = "androidx.test.espresso:espresso-idling-resource:${Versions.espressoCore}"
+    const val androidTestCore = "androidx.test:core-ktx:${Versions.androidxCoreTest}"
+    const val roomTesting = "androidx.room:room-testing:${Versions.room}"
+
 
 
 

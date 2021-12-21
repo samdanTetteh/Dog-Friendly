@@ -1,4 +1,4 @@
-package com.ijikod.dog_friendly.fakes
+package com.ijikod.dog_friendly
 
 import com.google.gson.Gson
 import com.ijikod.data.allBreeds.AllBreedsApiContract
