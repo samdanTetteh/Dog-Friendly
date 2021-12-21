@@ -1,12 +1,13 @@
 package com.ijikod.dog_friendly
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.ijikod.dog_friendly.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -30,5 +31,9 @@ class MainActivity : AppCompatActivity() {
 
         // setup toolbar with navigation component
         binding.toolbar.setupWithNavController(navHostFragment.navController, appBarConfiguration)
+    }
+
+    fun setTooBarTitle(title: String) {
+        binding.toolbar.title = title
     }
 }

@@ -77,7 +77,6 @@ dependencies {
     implementation project(path: ':domain')
     implementation project(path: ':data')
 
-    kapt Libs.hiltAndroidCompiler
 
     implementation Libs.androidKtx
     implementation Libs.appCompat
@@ -98,22 +97,38 @@ dependencies {
     implementation Libs.navigationUIKtx
     implementation Libs.fragment
     implementation Libs.picasso
+    implementation Libs.espressoIdleResource
 
+
+
+    // Instrumentation Tests
+    kapt Libs.hiltAndroidCompiler
     debugImplementation Libs.fragmentTesting
-
+    androidTestImplementation Libs.junit
+//    androidTestImplementation Libs.googleTruth
+    androidTestImplementation Libs.mockito
+    androidTestImplementation Libs.mockitoAndroid
+    androidTestImplementation Libs.androidxTestCore
+    androidTestImplementation Libs.androidxTestRunner
+    androidTestImplementation Libs.androidxTestRules
     androidTestImplementation Libs.navigationTesting
     androidTestImplementation Libs.espressoTest
     androidTestImplementation Libs.androidJunitTest
+    androidTestImplementation Libs.espressoIntents
+    androidTestImplementation Libs.hiltTesting
+    androidTestImplementation Libs.mockWebServer
+    androidTestImplementation Libs.okHttpIdleResource
     androidTestImplementation (Libs.espressoTestContrib){
         exclude group: 'com.android.support', module: 'appcompat'
         exclude module: 'recyclerview-v7'
         exclude module: 'appcompat-v7'
     }
 
-    testImplementation Libs.junit
-    testImplementation Libs.hiltTesting
+    androidTestImplementation('androidx.test.espresso:espresso-accessibility:' + Versions.espressoCore) {
+        exclude group: 'org.checkerframework', module: 'checker'
+    }
+
     testImplementation Libs.robolecttic
-    testImplementation Libs.mockito
     testImplementation Libs.mockitoKotlin
     testImplementation Libs.mockK
 
