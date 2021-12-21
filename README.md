@@ -54,4 +54,4 @@ Please find below more details...
 - Make UI Improvements and possibly introduce introducing [compose](https://developer.android.com/jetpack/androidx/releases/compose)
 
 # Issues faced
-- Implementing instrumentation tests with *Hilt*
+- Implementing instrumentation tests with *Hilt* not working as expected.
