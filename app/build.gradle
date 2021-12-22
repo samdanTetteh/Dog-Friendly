@@ -45,6 +45,16 @@ android {
         }
     }
 
+    android {
+        testOptions {
+            execution 'ANDROIDX_TEST_ORCHESTRATOR'
+
+            unitTests.all {
+                useJUnitPlatform() // <--- this is the important part
+            }
+        }
+    }
+
 
     packagingOptions {
         exclude 'LICENSE.txt'
@@ -74,14 +84,6 @@ android {
                         "room.expandProjection":"true"]
             }
         }
-    }
-
-    testOptions {
-        execution 'ANDROIDX_TEST_ORCHESTRATOR'
-        unitTests.returnDefaultValues = true
-        unitTests.includeAndroidResources = true
-        //for robolectric http://robolectric.org/migrating/#migrating-to-40
-        animationsDisabled = true
     }
 }
 
@@ -132,7 +134,7 @@ dependencies {
 
 
     // Instrumentation Tests
-    kapt Libs.hiltAndroidCompiler
+    kaptAndroidTest Libs.hiltAndroidCompiler
     debugImplementation Libs.fragmentTesting
 
     androidTestImplementation Libs.androidTestCore
@@ -146,7 +148,6 @@ dependencies {
     androidTestImplementation Libs.androidxTestRules
     androidTestImplementation Libs.navigationTesting
     androidTestImplementation Libs.espressoTest
-    androidTestImplementation Libs.androidJunitTest
     androidTestImplementation Libs.espressoIntents
     androidTestImplementation Libs.hiltTesting
     androidTestImplementation Libs.mockWebServer

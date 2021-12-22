@@ -46,4 +46,6 @@ dependencies {
     implementation Libs.kotlinStdlib
     implementation Libs.javaxInject
     testImplementation Libs.junit
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
 }
