@@ -16,7 +16,8 @@ android {
         versionCode ConfigData.versionCode
         versionName ConfigData.versionName
 
-        testInstrumentationRunner = "com.ijikod.com.ijikod.dog_friendly.CustomTestRunner"
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.ijikod.dog_friendly.CustomTestRunner"
     }
 
     buildTypes {
@@ -45,26 +46,11 @@ android {
         }
     }
 
-    android {
-        testOptions {
-            execution 'ANDROIDX_TEST_ORCHESTRATOR'
-
-            unitTests.all {
-                useJUnitPlatform() // <--- this is the important part
-            }
-        }
-    }
-
-
     packagingOptions {
         exclude 'LICENSE.txt'
         exclude 'META-INF/LICENSE.md'
         exclude 'META-INF/rxjava.properties'
         pickFirst 'META-INF/gradle/incremental.annotation.processors'
-    }
-
-    kapt {
-        correctErrorTypes = true
     }
 
     buildFeatures {
@@ -83,6 +69,12 @@ android {
                         "room.incremental":"true",
                         "room.expandProjection":"true"]
             }
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
         }
     }
 }
@@ -125,23 +117,23 @@ dependencies {
     // Dependencies for local unit tests
     testImplementation Libs.junit
     testImplementation Libs.androidArchCoreTesting
-    testImplementation Libs.robolecttic
+    testImplementation Libs.robolectric
     testImplementation Libs.navigationTesting
     testImplementation Libs.espressoTest
     testImplementation Libs.espressoIntents
     testImplementation Libs.espressoTestContrib
     testImplementation Libs.googleTruth
+    testImplementation Libs.mockito
 
-
+    kapt  Libs.hiltAndroidCompiler
     // Instrumentation Tests
-    kaptAndroidTest Libs.hiltAndroidCompiler
-    debugImplementation Libs.fragmentTesting
 
+    debugImplementation Libs.fragmentTesting
+    kaptAndroidTest  Libs.hiltAndroidCompiler
     androidTestImplementation Libs.androidTestCore
     androidTestImplementation Libs.junit
     androidTestImplementation Libs.androidJunitTest
-//    androidTestImplementation Libs.mockito
-//    androidTestImplementation Libs.mockitoAndroid
+    androidTestImplementation Libs.mockitoAndroid
     androidTestImplementation Libs.androidArchCoreTesting
     androidTestImplementation Libs.androidxTestCore
     androidTestImplementation Libs.androidxTestRunner
@@ -160,7 +152,6 @@ dependencies {
     }
 
 
-    testImplementation Libs.robolecttic
     testImplementation Libs.mockitoKotlin
     testImplementation Libs.mockK
 

@@ -1,17 +1,24 @@
 package com.ijikod.dog_friendly
 
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.IdlingRegistry
+import androidx.navigation.Navigation
+import androidx.navigation.testing.TestNavHostController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import com.ijikod.dog_friendly.common.EspressoIdlingResource
+import com.ijikod.dog_friendly.allBreeds.fragments.AllBreedsFragment
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import org.junit.After
+import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -27,28 +34,47 @@ class AppNavigationTest {
         hiltRule.inject()
     }
 
-    /**
-     * Idling resources tell Espresso that the app is idle or busy. This is needed when operations
-     * are not scheduled in the main Looper (for example when executed on a different thread).
-     */
-    @Before
-    fun registerIdlingResource() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
-    }
+    private val navController = TestNavHostController(ApplicationProvider.getApplicationContext())
 
-    /**
-     * Unregister your Idling Resource so it can be garbage collected and does not leak any memory.
-     */
-    @After
-    fun unregisterIdlingResource() {
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
-    }
 
     @Test
-    fun drawerNavigationFromTasksToStatistics() {
-        // start up Tasks screen
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+    fun givenApplicationIsLunchedNavigationIsCorrect() {
+        // Launch fragment
+        launchAllBreedsFragment()
 
+        // Get current navigation
+        val destination = navController.currentDestination
+
+        assertEquals(destination?.id, R.id.allBreedsFragment)
     }
+
+
+    @Test
+    fun givenListItemIsClickedBreedDetailsNavigationIsDisplayed() {
+        //Launch fragment
+        launchAllBreedsFragment()
+
+        //Click on first breed item
+        onView(withId(R.id.all_breeds_list))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
+
+        //Check that it navigates to Detail screen
+        val destination = navController.currentDestination
+        assertEquals(destination?.id, R.id.detailsFragment)
+    }
+
+    private fun launchAllBreedsFragment() {
+        launchFragmentInHiltContainer<AllBreedsFragment> {
+            navController.setGraph(R.navigation.nav_graph)
+            navController.setCurrentDestination(R.id.allBreedsFragment)
+            this.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
+                if (viewLifecycleOwner != null) {
+                    // The fragment’s view has just been created
+                    Navigation.setViewNavController(this.requireView(), navController)
+                }
+            }
+        }
+    }
+
 
 }

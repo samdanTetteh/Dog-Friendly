@@ -35,7 +35,7 @@ object Versions {
     const val rxAndroid = "2.1.1"
     const val rxBindings = "3.0.0"
     const val picasso = "2.71828"
-    const val robolectric = "4.7.3"
+    const val robolectric = "4.6"
     const val googleTruth = "1.1.3"
     const val mockito = "3.11.0"
     const val mockServer = "4.9.0"
