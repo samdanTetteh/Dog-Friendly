@@ -18,7 +18,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import junit.framework.Assert.assertNotNull
 
 
 @RunWith(AndroidJUnit4::class)
@@ -51,7 +50,7 @@ class AppNavigationTest {
 
 
     @Test
-    fun givenListItemIsClickedBreedDetailsIsDisplayed() {
+    fun givenListItemIsClickedBreedDetailsNavigationIsDisplayed() {
         //Launch fragment
         launchAllBreedsFragment()
 
@@ -62,9 +61,7 @@ class AppNavigationTest {
         //Check that it navigates to Detail screen
         val destination = navController.currentDestination
         assertEquals(destination?.id, R.id.detailsFragment)
-
     }
-
 
     private fun launchAllBreedsFragment() {
         launchFragmentInHiltContainer<AllBreedsFragment> {

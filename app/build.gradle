@@ -123,6 +123,7 @@ dependencies {
     testImplementation Libs.espressoIntents
     testImplementation Libs.espressoTestContrib
     testImplementation Libs.googleTruth
+    testImplementation Libs.mockito
 
     kapt  Libs.hiltAndroidCompiler
     // Instrumentation Tests
@@ -132,8 +133,7 @@ dependencies {
     androidTestImplementation Libs.androidTestCore
     androidTestImplementation Libs.junit
     androidTestImplementation Libs.androidJunitTest
-//    androidTestImplementation Libs.mockito
-//    androidTestImplementation Libs.mockitoAndroid
+    androidTestImplementation Libs.mockitoAndroid
     androidTestImplementation Libs.androidArchCoreTesting
     androidTestImplementation Libs.androidxTestCore
     androidTestImplementation Libs.androidxTestRunner
