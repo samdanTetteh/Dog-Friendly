@@ -56,7 +56,7 @@ object Libs {
     const val mockitoKotlin = "com.nhaarman:mockito-kotlin:1.5.0"
     const val mockK = "io.mockk:mockk:1.9.3"
 
-    const val robolecttic = "org.robolectric:robolectric:${Versions.robolectric}"
+    const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 
 
     // Instrumentation tests
