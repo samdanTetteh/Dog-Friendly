@@ -53,7 +53,7 @@ Please find below more details...
 # Future Improvements
 - Network notification when data is restored.
 - Make UI Improvements and possibly introduce introducing [compose](https://developer.android.com/jetpack/androidx/releases/compose)
-- Introduce some nice error pages and not rely on toats.
+- Introduce some nice error pages and not rely on toasts.
 
 # Issues faced
 - Has issues implementing instrumentation tests with *Hilt* but eventually resolved it.
