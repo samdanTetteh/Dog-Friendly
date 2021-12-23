@@ -54,7 +54,7 @@ class DetailsFragmentTest {
                 ViewAssertions.matches(
                     Matchers.allOf(
                         ViewMatchers.isDisplayed(),
-                        ViewMatchers.hasDescendant(ViewMatchers.withText(TEST_SUB_BREED))
+                        ViewMatchers.hasDescendant(ViewMatchers.withText("$TEST_BREED $TEST_SUB_BREED"))
                     )
                 )
             )

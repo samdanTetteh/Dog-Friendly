@@ -41,7 +41,7 @@ class GetAllBreedsImpl @Inject constructor(
             remote.getSubBreedDetails(breed, subBreed)
                 .toObservable()
                 .doAfterNext{
-                    breedDetailsDao.insert(it.toEntity(breed))
+                    breedDetailsDao.insert(it.toEntity(subBreed))
                 }.ignoreElements()
         }
     }
