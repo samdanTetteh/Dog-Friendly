@@ -24,7 +24,6 @@ class AllBreedsViewModelTest {
     }
 
 
-
     @Test
     fun `initial states values are null`() {
         val testObserver = viewModel.states().test()

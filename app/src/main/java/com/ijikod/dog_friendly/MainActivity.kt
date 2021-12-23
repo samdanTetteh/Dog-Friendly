@@ -6,11 +6,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.ijikod.dog_friendly.databinding.ActivityMainBinding
+import com.ijikod.dog_friendly.details.fragment.FragmentListener
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -33,7 +34,11 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setupWithNavController(navHostFragment.navController, appBarConfiguration)
     }
 
-    fun setTooBarTitle(title: String) {
+    private fun setTooBarTitle(title: String) {
         binding.toolbar.title = title
+    }
+
+    override fun onChangeToolBarTitle(title: String) {
+        setTooBarTitle(title)
     }
 }
