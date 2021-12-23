@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.ijikod.dog_friendly.MainActivity
 import com.ijikod.dog_friendly.allBreeds.AllBreedsViewModel
 import com.ijikod.dog_friendly.allBreeds.state.AllBreedsEvents
 import com.ijikod.dog_friendly.common.*
@@ -37,7 +36,7 @@ class DetailsFragment: Fragment() {
             val breed = args.getString(BREED_ARG, String())
             val  subBreed = args.getString(SUB_BREED_ARG, String())
 
-            (activity as MainActivity).setTooBarTitle(subBreed.ifEmpty { breed })
+            (activity as FragmentListener).onChangeToolBarTitle(subBreed.ifEmpty { breed })
             (viewModel::onShowBreedDetails)(breed, subBreed)
         }
 
@@ -65,7 +64,8 @@ class DetailsFragment: Fragment() {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
+}
 
-
-
+interface FragmentListener {
+    fun onChangeToolBarTitle(title: String)
 }

@@ -11,6 +11,9 @@ const val VIEW_TYPE_ITEM = 2
 const val BREED_ARG = "breed"
 const val SUB_BREED_ARG = "subBreed"
 
+const val TEST_BREED = "australian"
+const val TEST_SUB_BREED = "shepherd"
+
 
 fun RecyclerView.autoFitColumns(columnWidth: Int) {
     val displayMetrics = this.context.resources.displayMetrics

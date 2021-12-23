@@ -1,29 +1,29 @@
-package com.ijikod.dog_friendly
+package com.ijikod.dog_friendly.allBreeds.fragments
 
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import com.ijikod.dog_friendly.allBreeds.fragments.AllBreedsFragment
+import com.ijikod.dog_friendly.R
+import com.ijikod.dog_friendly.common.TEST_BREED
+import com.ijikod.dog_friendly.first
+import com.ijikod.dog_friendly.launchFragmentInHiltContainer
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import junit.framework.Assert.assertEquals
+import org.hamcrest.Matchers
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 @HiltAndroidTest
-class AppNavigationTest {
+class AllBreedsFragmentTest{
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -36,35 +36,29 @@ class AppNavigationTest {
 
     private val navController = TestNavHostController(ApplicationProvider.getApplicationContext())
 
-
     @Test
-    fun givenApplicationIsLunchedNavigationIsCorrect() {
-        // Launch fragment
+    fun givenAllBreedsFragmentIsDisplayedIsRecyclerViewVisible() {
         launchAllBreedsFragment()
-
-        // Get current navigation
-        val destination = navController.currentDestination
-
-        assertEquals(destination?.id, R.id.allBreedsFragment)
+        Espresso.onView(first(withId(R.id.all_breeds_list))).check(ViewAssertions.matches(isDisplayed()))
     }
 
-
     @Test
-    fun givenListItemIsClickedBreedDetailsNavigationIsDisplayed() {
-        //Launch fragment
+    fun givenAllBreedsFragmentIsDisplayedIsFirstBreedItemCorrect() {
         launchAllBreedsFragment()
+        Espresso.onView(first(withId(R.id.all_breeds_list)))
+            .check(
+                ViewAssertions.matches(
+                    Matchers.allOf(
+                        hasDescendant(withId(R.id.breed_txt).also {
+                            it.matches(withText(TEST_BREED))
+                        }),
+                    )
+                )
+            )}
 
-        //Click on first breed item
-        onView(withId(R.id.all_breeds_list))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
-
-        //Check that it navigates to Detail screen
-        val destination = navController.currentDestination
-        assertEquals(destination?.id, R.id.detailsFragment)
-    }
 
     private fun launchAllBreedsFragment() {
-        launchFragmentInHiltContainer<AllBreedsFragment> {
+        launchFragmentInHiltContainer<AllBreedsFragment>() {
             navController.setGraph(R.navigation.nav_graph)
             navController.setCurrentDestination(R.id.allBreedsFragment)
             this.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
@@ -75,6 +69,4 @@ class AppNavigationTest {
             }
         }
     }
-
-
 }
