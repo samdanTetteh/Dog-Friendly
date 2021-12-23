@@ -37,7 +37,7 @@ class DetailsFragment: Fragment() {
             val breed = args.getString(BREED_ARG, String())
             val  subBreed = args.getString(SUB_BREED_ARG, String())
 
-            (activity as FragmentListener).onChangeToolBarTitle(subBreed.ifEmpty { breed })
+            (activity as FragmentListener).onChangeToolBarTitle("$breed $subBreed")
             (viewModel::onShowBreedDetails)(breed, subBreed)
         }
 
