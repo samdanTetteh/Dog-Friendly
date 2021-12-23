@@ -45,6 +45,7 @@ Please find below more details...
 ### Script
 1. Clone this repository preferably with Android Studio
 2. Build project and then run application. In the situation where you are asked about trusting the application please do select *yes*
+3. Please make sure you are on the `main` branch as that has all the latest changes.
 
 # Notes
 - Dog-Friendly has offline support. Data is retrieved from remote when data is established and saved.
@@ -52,6 +53,7 @@ Please find below more details...
 # Future Improvements
 - Network notification when data is restored.
 - Make UI Improvements and possibly introduce introducing [compose](https://developer.android.com/jetpack/androidx/releases/compose)
+- Introduce some nice error pages and not rely on toats.
 
 # Issues faced
-- Implementing instrumentation tests with *Hilt* not working as expected.
+- Has issues implementing instrumentation tests with *Hilt* but eventually resolved it.
