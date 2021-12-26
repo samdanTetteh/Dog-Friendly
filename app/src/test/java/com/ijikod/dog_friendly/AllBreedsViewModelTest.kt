@@ -2,6 +2,7 @@ package com.ijikod.dog_friendly
 
 import com.ijikod.dog_friendly.allBreeds.AllBreedsViewModel
 import com.ijikod.dog_friendly.common.RxJavaTestRule
+import com.ijikod.dog_friendly.common.TEST_SUB_BREED
 import com.ijikod.domain.allBreeds.useCase.AllBreedsUseCase
 import org.junit.Before
 import org.junit.Rule
@@ -42,7 +43,7 @@ class AllBreedsViewModelTest {
 
     @Test
     fun `when showBreedDetails is called images breeds are loaded`() {
-        viewModel.onShowBreedDetails("shepherd", String())
+        viewModel.onShowBreedDetails(TEST_SUB_BREED, String())
 
         val testObserver = viewModel.states().test()
         testObserver.assertValue { state -> state.getBreedDetails == Fakes.getFakeBreedDetails().message }
