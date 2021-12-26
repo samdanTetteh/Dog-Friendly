@@ -1,3 +1,5 @@
+[![GitHub Clones](https://img.shields.io/badge/dynamic/json?color=success&label=Clone&query=count&url=<url>?raw=True&logo=github)](https://github.com/MShawon/github-clone-count-badge)
+
 <img src="images/dog-api-img.png" alt="Dog Api logo"/>
 
 # Dog Friendly
