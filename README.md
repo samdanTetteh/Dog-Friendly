@@ -56,4 +56,4 @@ Please find below more details...
 - Introduce some nice error pages and not rely on toasts.
 
 # Issues faced
-- Has issues implementing instrumentation tests with *Hilt* but eventually resolved it.
+- Had issues implementing instrumentation tests with *Hilt* but eventually resolved it.
