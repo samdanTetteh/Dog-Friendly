@@ -49,9 +49,8 @@ class AllBreedsFragmentTest{
             .check(
                 ViewAssertions.matches(
                     Matchers.allOf(
-                        hasDescendant(withId(R.id.breed_txt).also {
-                            it.matches(withText(TEST_BREED))
-                        }),
+                        hasDescendant(withId(R.id.breed_txt)),
+                        hasDescendant(withText(TEST_BREED.uppercase()))
                     )
                 )
             )}
