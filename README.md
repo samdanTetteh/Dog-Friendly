@@ -35,7 +35,7 @@ Please find below more details...
 - Data surviving configuration changes (with [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel))
 - Type safe dependency management (with [Kotlin DSL](https://kotlinlang.org/docs/type-safe-builders.html))
 - Android architecture components to share ViewModels during configuration changes
-- Composable UI (with [Jeckpack Compose](https://developer.android.com/jetpack/compose))
+- Composable UI (with [Jetpack Compose](https://developer.android.com/jetpack/compose))
 
 | All Breeds | Breed Details |
 |----------------------------|------------------------|
