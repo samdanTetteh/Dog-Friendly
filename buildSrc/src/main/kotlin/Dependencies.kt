@@ -58,6 +58,14 @@ object Libs {
 
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 
+    const val composeActivity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+    const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    const val composeAnimation = "androidx.compose.animation:animation:${Versions.compose}"
+    const val composeTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    const val composeLifecycle = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeLifeCycle}"
+
+    const val composeThemeAdapter = "com.google.android.material:compose-theme-adapter:${Versions.compose}"
+
 
     // Instrumentation tests
     const val junit = "junit:junit:${Versions.jUnit}"
@@ -81,7 +89,6 @@ object Libs {
     const val androidTestCore = "androidx.test:core-ktx:${Versions.androidxCoreTest}"
     const val roomTesting = "androidx.room:room-testing:${Versions.room}"
 
-
-
+    const val composeJunitTest = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
 
 }

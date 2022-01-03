@@ -2,7 +2,7 @@ object Versions {
 
     const val kotlin = "1.5.21"
     const val android = "7.1.0-beta05"
-    const val gradle = "4.2.1"
+    const val gradle = "7.0.0"
 
     // Androidx
     const val androidCore = "1.7.0"
@@ -39,6 +39,11 @@ object Versions {
     const val googleTruth = "1.1.3"
     const val mockito = "3.11.0"
     const val mockServer = "4.9.0"
+
+    // Compose
+    const val composeActivity = "1.3.1"
+    const val compose = "1.0.5"
+    const val composeLifeCycle = "1.0.0-alpha07"
 
     // Junit
     const val jUnit = "4.13.2"

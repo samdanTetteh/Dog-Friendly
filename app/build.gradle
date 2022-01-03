@@ -26,10 +26,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -54,7 +56,10 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        viewBinding true
+
+        // Enables Jetpack Compose for this module
+        compose true
     }
 
     lintOptions {
@@ -76,6 +81,10 @@ android {
         unitTests {
             includeAndroidResources = true
         }
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.5'
     }
 }
 
@@ -114,6 +123,14 @@ dependencies {
     implementation Libs.picasso
     implementation Libs.espressoIdleResource
 
+    implementation Libs.composeActivity
+    implementation Libs.composeMaterial
+    implementation Libs.composeAnimation
+    implementation Libs.composeTooling
+    implementation Libs.composeLifecycle
+    implementation Libs.composeThemeAdapter
+
+
     // Dependencies for local unit tests
     testImplementation Libs.junit
     testImplementation Libs.androidArchCoreTesting
@@ -145,6 +162,7 @@ dependencies {
     androidTestImplementation Libs.mockWebServer
     androidTestImplementation Libs.okHttpIdleResource
     androidTestImplementation Libs.roomTesting
+    androidTestImplementation Libs.composeJunitTest
     androidTestImplementation (Libs.espressoTestContrib){
         exclude group: 'com.android.support', module: 'appcompat'
         exclude module: 'recyclerview-v7'
