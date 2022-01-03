@@ -46,6 +46,7 @@ Please find below more details...
 1. Clone this repository preferably with Android Studio
 2. Build project and then run application. In the situation where you are asked about trusting the application please do select *yes*
 3. Please make sure you are on the `main` branch as that has all the latest changes.
+4. To view composable UI impelementation with Jetpack compose you can checkout the `compose` branch.
 
 # Notes
 - Dog-Friendly has offline support. Data is retrieved from remote when data is established and saved.
