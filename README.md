@@ -48,6 +48,8 @@ Please find below more details...
 3. Please make sure you are on the `main` branch as that has all the latest changes.
 4. To view composable UI impelementation with Jetpack compose you can checkout the `compose` branch.
 
+NB: Please note that testing in the `compose` branch might be unstable
+
 # Notes
 - Dog-Friendly has offline support. Data is retrieved from remote when data is established and saved.
 
