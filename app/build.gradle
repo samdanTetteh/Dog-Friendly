@@ -53,6 +53,8 @@ android {
         exclude 'META-INF/LICENSE.md'
         exclude 'META-INF/rxjava.properties'
         pickFirst 'META-INF/gradle/incremental.annotation.processors'
+        exclude 'win32-x86-64/attach_hotspot_windows.dll'
+        pickFirst 'META-INF/LGPL2.1'
     }
 
     buildFeatures {

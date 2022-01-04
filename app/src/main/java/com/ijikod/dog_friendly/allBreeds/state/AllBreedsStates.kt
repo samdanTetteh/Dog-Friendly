@@ -1,5 +1,6 @@
 package com.ijikod.dog_friendly.allBreeds.state
 
+import androidx.compose.runtime.Composable
 import com.ijikod.dog_friendly.common.AsyncResult
 import com.ijikod.domain.allBreeds.entity.AllBreeds
 import com.ijikod.domain.allBreeds.entity.BreedDetails

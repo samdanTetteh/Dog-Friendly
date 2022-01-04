@@ -33,6 +33,9 @@ class AllBreedsViewModel @Inject constructor (
 
         useCase.invoke()
             .mapToAsyncResult()
+            .doOnNext {
+                publish(AllBreedsEvents.Loading)
+            }
             .subscribeOn(Schedulers.io())
             .subscribe{
                 if (it is AsyncResult.Error){
