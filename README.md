@@ -55,7 +55,7 @@ NB: Please note that testing in the `compose` branch might be unstable
 
 # Future Improvements
 - Network notification when data is restored.
-- Make UI Improvements and possibly introduce introducing [compose](https://developer.android.com/jetpack/androidx/releases/compose)
+- Make UI Improvements and possibly introducing [compose](https://developer.android.com/jetpack/androidx/releases/compose)
 - Introduce some nice error pages and not rely on toasts.
 
 # Issues faced
