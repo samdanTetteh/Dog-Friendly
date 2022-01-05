@@ -22,26 +22,26 @@ class AllBreedsViewModel @Inject constructor (
             .mapToAsyncResult()
             .subscribeOn(Schedulers.io())
             .subscribe { result ->
-                if (result is AsyncResult.Error){
-                    publish(AllBreedsEvents.Error(result.error))
-                } else {
-                    applyState(Reducer { currentState().copy(allBreeds = result) })
-                    publish(AllBreedsEvents.ShowAllBreeds(currentState()))
+                when (result) {
+                    is AsyncResult.Success -> {
+                        applyState(Reducer { currentState().copy(allBreeds = result) })
+                        publish(AllBreedsEvents.ShowAllBreeds(currentState()))
+                    }
+                    else -> {}
                 }
             }.addDisposable()
 
 
         useCase.invoke()
             .mapToAsyncResult()
-            .doOnNext {
-                publish(AllBreedsEvents.Loading)
-            }
             .subscribeOn(Schedulers.io())
             .subscribe{
-                if (it is AsyncResult.Error){
-                    publish(AllBreedsEvents.Error(it.error))
+                when (it) {
+                    is AsyncResult.Error -> publish(AllBreedsEvents.Error(it.error))
+                    is AsyncResult.Loading -> publish(AllBreedsEvents.Loading)
+                    else -> {}
                 }
-            }.addDisposable()
+             }.addDisposable()
 
     }
 

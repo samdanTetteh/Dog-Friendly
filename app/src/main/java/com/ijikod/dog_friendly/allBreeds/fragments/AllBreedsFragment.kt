@@ -10,7 +10,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -19,11 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.composethemeadapter.MdcTheme
 import com.ijikod.dog_friendly.R
 import com.ijikod.dog_friendly.allBreeds.AllBreedsViewModel
@@ -60,33 +57,34 @@ class AllBreedsFragment : Fragment() {
 
         viewModel.events()
             .subscribe{ event ->
-
-                if (event is AllBreedsEvents.Loading) {
-                    binding.allBreedsView.setContent {
-                        MdcTheme {
-                            ShowLoading()
+                when (event) {
+                    is AllBreedsEvents.Loading -> {
+                        binding.allBreedsView.setContent {
+                            MdcTheme {
+                                ShowLoading()
+                            }
                         }
                     }
-                }
 
-                if (event is AllBreedsEvents.Error) {
-                    event.error.message?.let { errorMsg ->
-                        showToast(errorMsg)
+                    is AllBreedsEvents.Error -> {
+                        event.error.message?.let { errorMsg ->
+                            showToast(errorMsg)
+                        }
                     }
-                }
 
-                if (event is AllBreedsEvents.ShowAllBreeds) {
-                    event.state.let { state ->
-                        state.getAllBreeds?.let {
-                            binding.allBreedsView.setContent {
-                                MdcTheme {
-                                    BreedsList(breeds = state.allBreedsFormattedData)
+                    is AllBreedsEvents.ShowAllBreeds -> {
+                        event.state.let { state ->
+                            state.getAllBreeds?.let {
+                                binding.allBreedsView.setContent {
+                                    MdcTheme {
+                                        BreedsList(breeds = state.allBreedsFormattedData)
+                                    }
                                 }
                             }
                         }
                     }
+                    else -> {}
                 }
-
             }.addTo(disposable)
     }
 
